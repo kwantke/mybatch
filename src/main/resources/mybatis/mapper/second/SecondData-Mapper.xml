@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.or.mybatch.mapper.second.SecondMapper">
+
+  <insert id="insertSecondData">
+    insert into second_data (id, name, email, password)
+    values
+      <foreach collection="list" item="data" index="index" separator=",">
+        (
+          #{data.id}
+          ,#{data.name}
+          ,#{data.email}
+          ,#{data.password}
+        )
+      </foreach>
+
+  </insert>
+
+</mapper>
