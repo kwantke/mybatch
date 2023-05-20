@@ -1,0 +1,84 @@
+server:
+  port: 9010
+
+spring:
+  mvc:
+    throw-exception-if-no-handler-found: true  # 요청 url경로와 매핑되는 핸들러가 ㅇ벗
+  web:
+    resources:
+      add-mappings: false
+  jpa:
+    hibernate:
+      ddl-auto: validate
+      use-new-id-generator-mappings: true
+    show-sql: true
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQL82Dialect
+        #dialect: org.hibernate.dialect.MySQL8Dialect
+        format_sql: true
+        use_sql_comments: true
+        #default_schema: movieapi
+        default_schema: test  # Postgresql
+
+#  datasource:
+#    driver-class-name: net.sf.log4jdbc.sql.jdbcapi.DriverSpy
+#    url: jdbc:log4jdbc:postgresql://postgre-db.cfh61qv9x1da.us-west-2.rds.amazonaws.com:5432/postgre_db?rewriteBatchedStatements=true
+#    username: postgres
+#    password: adminadmin01
+
+
+#logging:
+#   level:
+#    org:
+#      hibernate:
+#        type: trace
+
+jwt:
+  base64:
+    secret: 'fsdfsdrSerTStWQrEWHGISfsadfsdqwreeWRTEWtWetTEWSyRYdYdruhS324523GFDRTDRGAWQerrerfsdfsdfsdgdsgsdftgsdgsdg32fdsFGsdfsDfSDF'
+
+logging:
+  level:
+    com:
+      zaxxer:
+        hikari: off
+    javax:
+      sql:
+        DataSource: OFF
+    jdbc:
+      audit: OFF
+      result: off
+
+      result-settable: INFO  #SQL 결과 데이터 Table을 로그로 남긴다.
+      sql only: off     #SQL만 로그로 남긴다.
+      sliding: debug    #SQL과 소요시간을 표기한다.
+      connection : OFF  # 커넥션 확인가능
+    org:
+      hibernate:
+        SQL: off
+        type:
+          descriptor:
+            sql:
+              BasicBinder: TRACE
+
+first:
+  datasource:
+    hikari:
+      driver-class-name: net.sf.log4jdbc.sql.jdbcapi.DriverSpy
+      jdbc-url: jdbc:log4jdbc:postgresql://postgre-db.cfh61qv9x1da.us-west-2.rds.amazonaws.com:5432/postgre_db?rewriteBatchedStatements=true
+      username: postgres
+      password: adminadmin01
+
+second:
+  datasource:
+    hikari:
+      driver-class-name: net.sf.log4jdbc.sql.jdbcapi.DriverSpy
+      jdbc-url: jdbc:log4jdbc:postgresql://postgre-db.cfh61qv9x1da.us-west-2.rds.amazonaws.com:5432/postgres?rewriteBatchedStatements=true
+      username: postgres
+      password: adminadmin01
+
+db:
+  datasource:
+    using-jndi: false
+    jndi-name: java/zpfranchisedevDs
